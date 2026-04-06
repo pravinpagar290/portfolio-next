@@ -5,7 +5,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-// Only run GSAP in client mode properly
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -31,40 +30,50 @@ const STORY_STEPS = [
 export default function PinnedStory() {
   const containerRef = useRef<HTMLDivElement>(null);
   const leftPanelRef = useRef<HTMLDivElement>(null);
-  const rightPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Basic GSAP scroll trigger to pin the left side while right side scrolls
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
-      if (!containerRef.current || !leftPanelRef.current || !rightPanelRef.current) return;
-      
+      if (!containerRef.current || !leftPanelRef.current) return;
+
+      const sections = gsap.utils.toArray<HTMLElement>(".story-section");
+
+      // 🔹 Pin left panel (optimized)
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
         end: "bottom bottom",
         pin: leftPanelRef.current,
-        pinSpacing: false,
-        scrub: true,
+        pinSpacing: true, // ensures height is preserved
+        anticipatePin: 1,
       });
 
-      // Simple fade animations for texts inside right panel
-      const sections = gsap.utils.toArray(".story-section");
-      sections.forEach((sec: any) => {
-        gsap.fromTo(
+      // 🔹 Single timeline instead of multiple triggers
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.5,
+        },
+      });
+
+      sections.forEach((sec, i) => {
+        tl.fromTo(
           sec,
-          { opacity: 0.2 },
-          {
-            opacity: 1,
-            scrollTrigger: {
-              trigger: sec,
-              start: "top center",
-              end: "bottom center",
-              scrub: true,
-            },
-          }
+          { opacity: 0, y: 100 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 2, // increased duration for smoother feel
+            ease: "power3.out" 
+          },
+          i * 1.5 // staggered start
         );
+        
+        // Add a small stay-alive period for each section
+        tl.to(sec, { opacity: 1, duration: 1 }); 
       });
     });
 
@@ -72,31 +81,52 @@ export default function PinnedStory() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full bg-black pt-32 pb-32">
+    <section
+      ref={containerRef}
+      className="relative w-full bg-black pt-32 pb-32"
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row gap-16 relative">
+        
         {/* Left pinned section */}
-        <div ref={leftPanelRef} className="w-full md:w-5/12 md:h-screen flex flex-col justify-center">
+        <div
+          ref={leftPanelRef}
+          className="w-full md:w-5/12 h-fit md:h-screen flex flex-col justify-center will-change-transform z-20"
+        >
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">
-            Process &<br/> Flow.
+            Process &<br /> Flow.
           </h2>
-          <p className="text-xl text-muted text-balance max-w-sm">
+          <p className="text-xl text-muted max-w-sm">
             A systematic approach to breaking down creative visions into highly robust frontend systems.
           </p>
         </div>
 
         {/* Right scrolling section */}
-        <div ref={rightPanelRef} className="w-full md:w-7/12 flex flex-col gap-32 md:gap-[50vh] md:pb-[50vh] md:pt-[25vh]">
+        <div className="w-full md:w-7/12 flex flex-col gap-40 md:pt-[20vh] md:pb-[40vh]">
           {STORY_STEPS.map((step, i) => (
-            <div key={i} className="story-section flex flex-col gap-6">
-              <span className="text-accent font-bold tracking-widest text-sm uppercase">Phase 0{i + 1}</span>
-              <h3 className="text-3xl md:text-5xl font-bold">{step.title}</h3>
-              <p className="text-lg md:text-xl text-muted max-w-md">{step.text}</p>
-              
-              <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden mt-6 bg-white/5 border border-white/5">
+            <div
+              key={i}
+              className="story-section flex flex-col gap-6 will-change-transform will-change-opacity transform-gpu"
+            >
+              <span className="text-accent font-bold tracking-widest text-sm uppercase">
+                Phase 0{i + 1}
+              </span>
+
+              <h3 className="text-3xl md:text-5xl font-bold">
+                {step.title}
+              </h3>
+
+              <p className="text-lg md:text-xl text-muted max-w-md">
+                {step.text}
+              </p>
+
+              <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden mt-6 bg-white/5 border border-white/5 will-change-transform">
                 <Image
                   src={step.imgUrl}
                   alt={`Process step: ${step.title}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={70}
+                  priority={i === 0}
                   className="object-cover"
                 />
               </div>

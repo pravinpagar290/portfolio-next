@@ -16,7 +16,7 @@ interface AnimatedTextProps {
 export default function AnimatedText({
   text,
   type = "words",
-  delay = 0,
+  delay = 0.5,
   className = "",
   el,
   once = true,

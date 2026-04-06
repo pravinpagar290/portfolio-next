@@ -2,68 +2,58 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-
-const SKILLS = [
-  {
-    category: "Frontend & Architecture",
-    items: ["React", "Next.js App Router", "TypeScript", "Tailwind CSS", "Redux Toolkit", "Zustand"],
-  },
-  {
-    category: "Creative & Animation",
-    items: ["Framer Motion", "GSAP ScrollTrigger", "Three.js", "React Three Fiber", "Lenis", "WebGL"],
-  },
-  {
-    category: "Backend & Systems",
-    items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Prisma", "REST / GraphQL API"],
-  },
-  {
-    category: "Tooling & Performance",
-    items: ["Webpack", "Vite", "SEO Optimization", "Web Vitals", "Lighthouse 100", "Git Workflow"],
-  },
-];
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
+import { SKILL_CATEGORIES } from "@/lib/data";
+import { MOTION_VARIANTS } from "@/lib/motion";
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills" className="py-24 md:py-32 bg-white/5 rounded-3xl my-24 lg:my-32">
+    <SectionWrapper id="skills" className="py-24 md:py-32 bg-white/2 rounded-[3rem] my-24 lg:my-32 border border-white/5">
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-4">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Technical Arsenal</h2>
-          <p className="text-muted text-lg">A highly curated stack focused on robustness and scale.</p>
+          <motion.span 
+            variants={MOTION_VARIANTS.fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            className="text-accent font-bold tracking-[0.2em] uppercase text-sm"
+          >
+            Capabilities
+          </motion.span>
+          <motion.h2 
+            variants={MOTION_VARIANTS.fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none"
+          >
+            Technical Arsenal.
+          </motion.h2>
+          <motion.p 
+            variants={MOTION_VARIANTS.fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            custom={0.2}
+            className="text-muted text-xl max-w-xl"
+          >
+            A highly curated stack focused on robustness, performance, and atmospheric user experiences.
+          </motion.p>
         </div>
 
         <motion.div
-          variants={containerVariants}
+          variants={MOTION_VARIANTS.staggerContainer(0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
         >
-          {SKILLS.map((skillGroup, i) => (
+          {SKILL_CATEGORIES.map((skillGroup, i) => (
             <motion.div
               key={i}
-              variants={cardVariants}
-              className="group relative p-8 md:p-10 rounded-2xl bg-black border border-white/10 overflow-hidden hover:border-accent/50 transition-colors duration-500"
+              variants={MOTION_VARIANTS.fadeUp}
+              className="group relative p-10 md:p-12 rounded-3xl bg-black border border-white/10 overflow-hidden hover:border-accent/50 transition-all duration-700"
             >
               {/* Subtle hover glow */}
-              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-accent/3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               
-              <h3 className="text-xl font-bold mb-6 text-white group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-2xl font-bold mb-8 text-white group-hover:text-accent transition-colors duration-500">
                 {skillGroup.category}
               </h3>
               
@@ -71,7 +61,7 @@ export default function Skills() {
                 {skillGroup.items.map((item, j) => (
                   <span
                     key={j}
-                    className="px-4 py-2 text-sm font-medium bg-white/10 text-muted rounded-full transition-all duration-300 group-hover:bg-white/20 group-hover:text-white"
+                    className="px-5 py-2.5 text-sm font-semibold bg-white/5 text-muted rounded-full border border-white/5 transition-all duration-500 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/10"
                   >
                     {item}
                   </span>

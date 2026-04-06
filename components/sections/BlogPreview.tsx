@@ -9,18 +9,21 @@ const BLOG_DATA = [
     excerpt: "A deep dive into how server-first architecture fundamentally shifts performance paradigms and optimizes core web vitals natively.",
     date: "MAR 10, 2026",
     slug: "understanding-react-server-components",
+    imageSrc: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop",
   },
   {
     title: "Mastering Scroll-Driven Animations with GSAP",
     excerpt: "Step-by-step techniques for building high-framerate scrollytelling experiences without tanking the browser's main thread.",
     date: "FEB 24, 2026",
     slug: "mastering-gsap-scroll-driven-animations",
+    imageSrc: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
   },
   {
     title: "Architecting a Scalable Headless E-commerce Solution",
     excerpt: "Key design patterns and API routing strategies for taking an e-commerce platform headless using Shopify and Next.js.",
     date: "JAN 15, 2026",
     slug: "architecting-headless-ecommerce",
+    imageSrc: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=2089&auto=format&fit=crop",
   },
 ];
 
