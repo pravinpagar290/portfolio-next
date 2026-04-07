@@ -29,27 +29,15 @@ const STORY_STEPS = [
 
 export default function PinnedStory() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const leftPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
-      if (!containerRef.current || !leftPanelRef.current) return;
+      if (!containerRef.current) return;
 
       const sections = gsap.utils.toArray<HTMLElement>(".story-section");
 
-      // 🔹 Pin left panel (optimized)
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        pin: leftPanelRef.current,
-        pinSpacing: true, // ensures height is preserved
-        anticipatePin: 1,
-      });
-
-      // 🔹 Single timeline instead of multiple triggers
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -63,17 +51,16 @@ export default function PinnedStory() {
         tl.fromTo(
           sec,
           { opacity: 0, y: 100 },
-          { 
-            opacity: 1, 
-            y: 0, 
-            duration: 2, // increased duration for smoother feel
-            ease: "power3.out" 
+          {
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: "power3.out",
           },
-          i * 1.5 // staggered start
+          i * 1.5
         );
-        
-        // Add a small stay-alive period for each section
-        tl.to(sec, { opacity: 1, duration: 1 }); 
+
+        tl.to(sec, { opacity: 1, duration: 1 });
       });
     });
 
@@ -86,11 +73,11 @@ export default function PinnedStory() {
       className="relative w-full bg-black pt-32 pb-32"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row gap-16 relative">
-        
-        {/* Left pinned section */}
+
+        {/* Left sticky section — uses CSS sticky instead of GSAP pin to avoid
+            pin-spacer layout issues inside the flex container */}
         <div
-          ref={leftPanelRef}
-          className="w-full md:w-5/12 h-fit md:h-screen flex flex-col justify-center will-change-transform z-20"
+          className="w-full md:w-5/12 h-fit md:sticky md:top-0 md:h-screen flex flex-col justify-center z-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">
             Process &<br /> Flow.
