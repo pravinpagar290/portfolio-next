@@ -52,7 +52,7 @@ export default function Hero() {
             custom={1.2}
             className="text-xl md:text-3xl font-medium text-muted max-w-2xl text-balance leading-tight"
           >
-            Senior Frontend Architect specialized in building <span className="text-white">highly performant</span>, pixel-perfect web systems where aesthetics meet engineering.
+            A MERN Stack Developer specialized in building <span className="text-white">highly performant</span>, pixel-perfect web systems where aesthetics meet engineering.
           </motion.p>
 
           <motion.div

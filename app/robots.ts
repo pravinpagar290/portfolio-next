@@ -1,14 +1,13 @@
-import { MetadataRoute } from 'next'
- 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://yourportfolio.com';
+import { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/lib/data";
 
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/private/'],
+      userAgent: "*",
+      allow: "/",
+      disallow: "/admin/",
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
+  };
 }

@@ -17,7 +17,7 @@ export default function About() {
             whileInView="visible"
             className="text-accent font-bold tracking-[0.2em] uppercase text-sm"
           >
-            Digital Kinship
+            About Me
           </motion.span>
           <motion.h2 
             variants={MOTION_VARIANTS.fadeUp}
@@ -25,7 +25,7 @@ export default function About() {
             whileInView="visible"
             className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none"
           >
-            Collaborative Stories.
+            Who Am I?
           </motion.h2>
           <motion.p 
             variants={MOTION_VARIANTS.fadeUp}
@@ -34,7 +34,7 @@ export default function About() {
             custom={0.2}
             className="text-muted text-xl"
           >
-            A look into the partnerships that redefine digital boundaries through high-performance engineering.
+            I am a MERN Stack Developer with a passion for building innovative and user-friendly web applications.
           </motion.p>
         </div>
 

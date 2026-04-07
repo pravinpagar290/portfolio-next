@@ -52,10 +52,10 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Michael Chen",
-    title: "Senior Software Engineer, Cloud Infrastructure",
+    name: "Pravin Pagar",
+    title: "Full Stack (MERN) Developer · IT Engineering Student",
     description:
-      "Working with this team completely changed our infrastructure game. The support and expertise were incredible. They delivered beyond our expectations and helped us scale to millions of users.",
+      "Full-stack developer specializing in the MERN stack (MongoDB, Express.js, React, Node.js) with a strong focus on building scalable and responsive web applications. Passionate about turning ideas into functional products through clean code, efficient APIs, and modern UI practices.",
     imageUrl:
       "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     githubUrl: "#",
@@ -64,24 +64,24 @@ const testimonials: Testimonial[] = [
     linkedinUrl: "#",
   },
   {
-    name: "Jessica Roberts",
-    title: "Lead Data Scientist, InsightX",
+    name: "My Tech Stack",
+    title: "JavaScript · TypeScript · React · Node.js · MongoDB",
     description:
-      "The data analytics platform they built gave our team the confidence and tools needed for true data-driven decisions. Their dashboarding capabilities went above and beyond our expectations.",
+      "Core toolkit: JavaScript/TypeScript, React & Next.js for interactive UIs, Node.js + Express for scalable APIs, and MongoDB/MySQL for data. I rely on Tailwind CSS, shadcn/ui, GSAP, Redux, and modern tooling to ship responsive, animated, production-ready experiences.",
     imageUrl:
-      "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     githubUrl: "#",
     twitterUrl: "#",
     youtubeUrl: "#",
     linkedinUrl: "#",
   },
   {
-    name: "William Carter",
-    title: "VP Product, NovaLabs",
+    name: "What Drives Me",
+    title: "Real-world Products · Problem Solving · Continuous Learning",
     description:
-      "NovaLabs helped our products find the perfect market fit. Their engineering team exceeded every delivery milestone and provided exceptional technical leadership.",
+      "I’m driven by building real products that solve actual problems. I love diving into complex challenges, architecting clean solutions, and constantly learning new technologies to stay ahead in this fast-moving field.",
     imageUrl:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     githubUrl: "#",
     twitterUrl: "#",
     youtubeUrl: "#",

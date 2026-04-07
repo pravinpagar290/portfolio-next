@@ -3,24 +3,25 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/layout/CustomCursor";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import { SITE_CONFIG } from "@/lib/data";
 
-const inter = Inter({ 
-  subsets: ["latin"], 
+const inter = Inter({
+  subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
-  variable: "--font-inter" 
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.name} | Senior Frontend Architect`,
+    default: `${SITE_CONFIG.name} | ${SITE_CONFIG.role}`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: ["Pravin Pagar", "Frontend Architect", "UI Engineer", "Next.js Expert", "Creative Developer", "React Performance"],
+  keywords: SITE_CONFIG.keywords,
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
   openGraph: {
@@ -30,19 +31,35 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     title: `${SITE_CONFIG.name} | Portfolio`,
     description: SITE_CONFIG.description,
-    images: [{ url: SITE_CONFIG.ogImage, width: 1200, height: 630, alt: SITE_CONFIG.name }],
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: SITE_CONFIG.name,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
-    creator: "@pravinpagar", 
+    creator: "@pravinpagar",
     images: [SITE_CONFIG.ogImage],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google-site-verification-code-here", // Replace with actual code
   },
 };
 
@@ -54,6 +71,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="canonical" href={SITE_CONFIG.url} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -64,24 +84,28 @@ export default function RootLayout({
               url: SITE_CONFIG.url,
               jobTitle: SITE_CONFIG.role,
               description: SITE_CONFIG.description,
+              email: SITE_CONFIG.links.email,
               sameAs: [
                 SITE_CONFIG.links.github,
                 SITE_CONFIG.links.linkedin,
-                SITE_CONFIG.links.twitter
+                SITE_CONFIG.links.twitter,
               ],
+              image: SITE_CONFIG.ogImage,
             }),
           }}
         />
       </head>
-      <body suppressHydrationWarning className="font-sans antialiased bg-black text-white selection:bg-accent selection:text-white overflow-x-hidden">
+      <body
+        suppressHydrationWarning
+        className="font-sans antialiased bg-black text-white selection:bg-accent selection:text-white overflow-x-hidden"
+      >
         <ScrollProgress />
         <CustomCursor />
         <SmoothScroll>
           <div className="flex flex-col min-h-screen">
             <Navbar />
-            <div className="grow">
-              {children}
-            </div>
+            <div className="grow">{children}</div>
+            <Footer />
           </div>
         </SmoothScroll>
       </body>
