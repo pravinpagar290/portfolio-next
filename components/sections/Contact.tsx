@@ -272,18 +272,26 @@ export default function Contact() {
           <p className="text-muted mb-6">Or reach out directly</p>
           <div className="flex flex-col md:flex-row justify-center gap-8">
             <a
-              href="mailto:hello@pravinpagar.com"
+              href="mailto:pravinpagar290@gmail.com"
               className="text-white hover:text-accent transition-colors font-bold"
             >
-              hello@pravinpagar.com
+              pravinpagar290@gmail.com
             </a>
             <a
-              href="https://linkedin.com/in/pravinpagar"
+              href="https://www.linkedin.com/in/pravin-pagar-33b350320/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-accent transition-colors font-bold"
             >
               LinkedIn
+            </a>
+            <a
+              href="https://github.com/pravinpagar290"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-accent transition-colors font-bold"
+            >
+              GitHub
             </a>
           </div>
         </motion.div>

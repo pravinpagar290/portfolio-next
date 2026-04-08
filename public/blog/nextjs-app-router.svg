@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nextGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#nextGrad)"/>
+  
+  <!-- Title -->
+  <text x="600" y="80" font-size="48" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial">
+    Next.js App Router
+  </text>
+  
+  <!-- File structure representation -->
+  <text x="150" y="150" font-size="18" font-weight="bold" fill="#10b981" font-family="monospace">app/</text>
+  
+  <!-- Root level -->
+  <rect x="150" y="170" width="300" height="60" rx="5" fill="#1f2937" stroke="#10b981" stroke-width="2"/>
+  <text x="300" y="205" font-size="14" font-weight="bold" text-anchor="middle" fill="#10b981" font-family="monospace">layout.tsx</text>
+  
+  <!-- Nested routes -->
+  <text x="150" y="280" font-size="16" font-weight="bold" fill="#ec4899" font-family="monospace">→ /about</text>
+  <rect x="150" y="300" width="300" height="60" rx="5" fill="#1f2937" stroke="#ec4899" stroke-width="2"/>
+  <text x="300" y="335" font-size="14" font-weight="bold" text-anchor="middle" fill="#ec4899" font-family="monospace">page.tsx</text>
+  
+  <!-- Dynamic routes -->
+  <text x="650" y="150" font-size="18" font-weight="bold" fill="#06b6d4" font-family="monospace">/blog/[slug]</text>
+  
+  <rect x="650" y="170" width="300" height="60" rx="5" fill="#1f2937" stroke="#06b6d4" stroke-width="2"/>
+  <text x="800" y="205" font-size="14" font-weight="bold" text-anchor="middle" fill="#06b6d4" font-family="monospace">Dynamic Routes</text>
+  
+  <!-- Server Components -->
+  <text x="650" y="280" font-size="16" font-weight="bold" fill="#fbbf24" font-family="monospace">Server Components</text>
+  <rect x="650" y="300" width="300" height="60" rx="5" fill="#1f2937" stroke="#fbbf24" stroke-width="2"/>
+  <text x="800" y="335" font-size="14" font-weight="bold" text-anchor="middle" fill="#fbbf24" font-family="monospace">Direct DB Access</text>
+  
+  <!-- Features at bottom -->
+  <rect x="100" y="480" width="220" height="100" rx="8" fill="#1f2937" opacity="0.8" stroke="#10b981" stroke-width="2"/>
+  <text x="210" y="510" font-size="13" font-weight="bold" text-anchor="middle" fill="#10b981" font-family="Arial">File-based</text>
+  <text x="210" y="535" font-size="11" text-anchor="middle" fill="white" font-family="Arial">Routing</text>
+  <text x="210" y="560" font-size="11" text-anchor="middle" fill="white" font-family="Arial">No config needed</text>
+  
+  <rect x="490" y="480" width="220" height="100" rx="8" fill="#1f2937" opacity="0.8" stroke="#06b6d4" stroke-width="2"/>
+  <text x="600" y="510" font-size="13" font-weight="bold" text-anchor="middle" fill="#06b6d4" font-family="Arial">Server</text>
+  <text x="600" y="535" font-size="11" text-anchor="middle" fill="white" font-family="Arial">Components</text>
+  <text x="600" y="560" font-size="11" text-anchor="middle" fill="white" font-family="Arial">Zero JS to client</text>
+  
+  <rect x="880" y="480" width="220" height="100" rx="8" fill="#1f2937" opacity="0.8" stroke="#fbbf24" stroke-width="2"/>
+  <text x="990" y="510" font-size="13" font-weight="bold" text-anchor="middle" fill="#fbbf24" font-family="Arial">Performance</text>
+  <text x="990" y="535" font-size="11" text-anchor="middle" fill="white" font-family="Arial">Optimized</text>
+  <text x="990" y="560" font-size="11" text-anchor="middle" fill="white" font-family="Arial">Built-in caching</text>
+</svg>
