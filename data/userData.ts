@@ -160,15 +160,40 @@ export const UserData = {
   ],
 
   // Blog / Articles (Keep placeholders or clear if not applicable)
-  articles: [],
+  articles: [
+    {
+      id: 1,
+      title: "Building Scalable MERN Stack Applications",
+      slug: "building-scalable-mern-applications",
+      excerpt: "A comprehensive guide to architecting production-ready MERN applications with proper structure and best practices.",
+      date: "2024-12-15",
+      imageSrc: "/blog/mern-architecture.jpg",
+    },
+    {
+      id: 2,
+      title: "Real-time Features with Socket.io",
+      slug: "realtime-features-socket-io",
+      excerpt: "Learn how to implement WebSocket communication for real-time features in your web applications.",
+      date: "2024-11-20",
+      imageSrc: "/blog/socket-io.jpg",
+    },
+    {
+      id: 3,
+      title: "Mastering Next.js App Router",
+      slug: "mastering-nextjs-app-router",
+      excerpt: "Deep dive into Next.js 14+ App Router patterns and server components for better performance.",
+      date: "2024-10-05",
+      imageSrc: "/blog/nextjs-app-router.jpg",
+    },
+  ],
 
   // Navigation Links
   navigation: [
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#projects" },
+    { name: "About", href: "/about" },
+    { name: "Work", href: "/projects" },
     { name: "Journey", href: "#timeline" },
     { name: "Journal", href: "#journal" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ],
 
   // Testimonials (Cleared since real ones were about slides in About.jsx)

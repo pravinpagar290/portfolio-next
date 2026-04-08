@@ -22,8 +22,14 @@ export const metadata: Metadata = {
   },
   description: SITE_CONFIG.description,
   keywords: SITE_CONFIG.keywords,
-  authors: [{ name: SITE_CONFIG.name }],
+  authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  formatDetection: {
+    email: true,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -45,6 +51,7 @@ export const metadata: Metadata = {
     title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
     creator: "@pravinpagar",
+    site: "@pravinpagar",
     images: [SITE_CONFIG.ogImage],
   },
   robots: {
@@ -58,6 +65,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: SITE_CONFIG.url,
+    languages: {
+      "en-US": SITE_CONFIG.url,
+    },
+  },
+  category: "technology",
+  classification: "Portfolio",
   verification: {
     google: "google-site-verification-code-here", // Replace with actual code
   },
@@ -74,6 +89,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <link rel="canonical" href={SITE_CONFIG.url} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        
+        {/* Person Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -88,9 +107,39 @@ export default function RootLayout({
               sameAs: [
                 SITE_CONFIG.links.github,
                 SITE_CONFIG.links.linkedin,
-                SITE_CONFIG.links.twitter,
               ],
               image: SITE_CONFIG.ogImage,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Nashik",
+                addressRegion: "Maharashtra",
+                addressCountry: "IN",
+              },
+              worksFor: {
+                "@type": "Organization",
+                name: "Freelance",
+              },
+            }),
+          }}
+        />
+        
+        {/* Website Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: SITE_CONFIG.name,
+              url: SITE_CONFIG.url,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${SITE_CONFIG.url}/search?q={search_term_string}`,
+                },
+                "query-input": "required name=search_term_string",
+              },
             }),
           }}
         />

@@ -19,6 +19,33 @@ const nextConfig: NextConfig = {
     ],
     qualities: [70, 75, 80],
   },
+  
+  // SEO improvements - trailing slashes for consistency
+  trailingSlash: false,
+  
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
+  },
+  
   // Ensure Next.js handles TS warnings during build by default, but you might want to uncomment later
   // typescript: { ignoreBuildErrors: false },
 };
