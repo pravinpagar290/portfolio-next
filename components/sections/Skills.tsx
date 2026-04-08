@@ -4,13 +4,17 @@ import { motion } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { SKILL_CATEGORIES } from "@/lib/data";
 import { MOTION_VARIANTS } from "@/lib/motion";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills" className="py-24 md:py-32 bg-white/2 rounded-[3rem] my-24 lg:my-32 border border-white/5">
+    <SectionWrapper
+      id="skills"
+      className="py-24 md:py-32 bg-white/2 rounded-[3rem] my-24 lg:my-32 border border-white/5"
+    >
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-4">
-          <motion.span 
+          <motion.span
             variants={MOTION_VARIANTS.fadeIn}
             initial="hidden"
             whileInView="visible"
@@ -18,7 +22,7 @@ export default function Skills() {
           >
             Capabilities
           </motion.span>
-          <motion.h2 
+          <motion.h2
             variants={MOTION_VARIANTS.fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -26,14 +30,15 @@ export default function Skills() {
           >
             Technical Arsenal.
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={MOTION_VARIANTS.fadeUp}
             initial="hidden"
             whileInView="visible"
             custom={0.2}
             className="text-muted text-xl max-w-xl"
           >
-            A highly curated stack focused on robustness, performance, and atmospheric user experiences.
+            A highly curated stack focused on robustness, performance, and
+            atmospheric user experiences.
           </motion.p>
         </div>
 
@@ -48,25 +53,28 @@ export default function Skills() {
             <motion.div
               key={i}
               variants={MOTION_VARIANTS.fadeUp}
-              className="group relative p-10 md:p-12 rounded-3xl bg-black border border-white/10 overflow-hidden hover:border-accent/50 transition-all duration-700"
+              className="group h-full"
             >
-              {/* Subtle hover glow */}
-              <div className="absolute inset-0 bg-accent/3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              
-              <h3 className="text-2xl font-bold mb-8 text-white group-hover:text-accent transition-colors duration-500">
-                {skillGroup.category}
-              </h3>
-              
-              <div className="flex flex-wrap gap-3">
-                {skillGroup.items.map((item, j) => (
-                  <span
-                    key={j}
-                    className="px-5 py-2.5 text-sm font-semibold bg-white/5 text-muted rounded-full border border-white/5 transition-all duration-500 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/10"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <GlowCard
+                glowColor="accent"
+                customSize
+                className="w-full h-full p-10 md:p-12 border border-white/10 bg-black/50"
+              >
+                <h3 className="text-2xl font-bold mb-8 text-white group-hover:text-accent transition-colors duration-500">
+                  {skillGroup.category}
+                </h3>
+
+                <div className="flex flex-wrap gap-3">
+                  {skillGroup.items.map((item, j) => (
+                    <span
+                      key={j}
+                      className="px-5 py-2.5 text-sm font-semibold bg-white/5 text-muted rounded-full border border-white/5 transition-all duration-500 hover:bg-white/10 hover:text-white hover:border-white/10"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </GlowCard>
             </motion.div>
           ))}
         </motion.div>

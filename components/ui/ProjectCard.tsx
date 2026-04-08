@@ -35,17 +35,31 @@ export default function ProjectCard({
 
       {/* Image container with premium hover scaling */}
       <div className="relative aspect-4/3 sm:aspect-video lg:aspect-4/3 w-full overflow-hidden rounded-2xl bg-muted/20">
+        {/* Grayscale base image */}
         <Image
           src={imageSrc}
           alt={`Preview of ${title} project`}
           fill
-          priority={index < 2} // Prioritize first two project images for LCP
+          priority={index < 2}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-110 will-change-transform"
+          className="object-cover grayscale"
         />
 
-        {/* Subtle glassmorphism overlay on hover */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none backdrop-blur-[2px]" />
+        {/* Color overlay image with fade-to-left effect */}
+        <Image
+          src={imageSrc}
+          alt={`Preview of ${title} project`}
+          fill
+          priority={index < 2}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            maskImage:
+              "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+          }}
+        />
 
         {/* Hover Action Indicator */}
         <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
