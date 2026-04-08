@@ -17,14 +17,24 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.name} | ${SITE_CONFIG.role}`,
-    template: `%s | ${SITE_CONFIG.name}`,
+    default: `${SITE_CONFIG.name} | Full Stack MERN Stack Developer - Portfolio`,
+    template: `%s | ${SITE_CONFIG.name} - Pravin Pagar Developer`,
   },
-  description: SITE_CONFIG.description,
-  keywords: SITE_CONFIG.keywords,
+  description: `${SITE_CONFIG.name} - A Full Stack MERN Stack Developer from Nashik, India. Pravin Pagar specializes in building scalable web applications with React, Node.js, MongoDB, and modern technologies. Explore Pravin Pagar's portfolio of innovative web projects.`,
+  keywords: [
+    ...SITE_CONFIG.keywords,
+    "pravin pagar",
+    "pravin pagar developer",
+    "pravin pagar mern stack",
+    "pravin pagar portfolio",
+    "Pravin Pagar full stack",
+    "Pravin Pagar web developer",
+  ],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
+  robots:
+    "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   formatDetection: {
     email: true,
     address: false,
@@ -35,21 +45,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
-    title: `${SITE_CONFIG.name} | Portfolio`,
-    description: SITE_CONFIG.description,
+    title: `${SITE_CONFIG.name} | Full Stack MERN Stack Developer Portfolio`,
+    description: `Pravin Pagar's portfolio - Full Stack MERN Developer. Building high-performance web applications with React, Next.js, Node.js, and MongoDB. Explore Pravin Pagar developer projects.`,
     images: [
       {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: SITE_CONFIG.name,
+        alt: `${SITE_CONFIG.name} - Pravin Pagar Portfolio`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_CONFIG.name,
-    description: SITE_CONFIG.description,
+    title: `${SITE_CONFIG.name} - Pravin Pagar Developer`,
+    description: `Pravin Pagar is a Full Stack MERN Developer. Explore projects and expertise in React, Next.js, Node.js development.`,
     creator: "@pravinpagar",
     site: "@pravinpagar",
     images: [SITE_CONFIG.ogImage],
@@ -91,7 +101,7 @@ export default function RootLayout({
         <link rel="canonical" href={SITE_CONFIG.url} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
-        
+
         {/* Person Schema */}
         <script
           type="application/ld+json"
@@ -104,10 +114,7 @@ export default function RootLayout({
               jobTitle: SITE_CONFIG.role,
               description: SITE_CONFIG.description,
               email: SITE_CONFIG.links.email,
-              sameAs: [
-                SITE_CONFIG.links.github,
-                SITE_CONFIG.links.linkedin,
-              ],
+              sameAs: [SITE_CONFIG.links.github, SITE_CONFIG.links.linkedin],
               image: SITE_CONFIG.ogImage,
               address: {
                 "@type": "PostalAddress",
@@ -122,7 +129,7 @@ export default function RootLayout({
             }),
           }}
         />
-        
+
         {/* Website Schema */}
         <script
           type="application/ld+json"

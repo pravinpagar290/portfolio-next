@@ -3,38 +3,43 @@ import { SITE_CONFIG, PROJECTS } from "@/lib/data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
-  title: `Portfolio & Projects | ${SITE_CONFIG.name}`,
-  description: `Explore my latest projects and work. High-performance web applications built with React, Next.js, Three.js, and modern frontend technologies.`,
+  title: `Pravin Pagar Portfolio & Projects | MERN Stack Developer`,
+  description: `Pravin Pagar's portfolio of projects. Explore full stack web applications built with React, Next.js, Node.js, MongoDB. View Pravin Pagar developer's MERN stack projects and technical work.`,
   keywords: [
     "Pravin Pagar",
-    "Projects",
+    "Pravin Pagar portfolio",
+    "Pravin Pagar projects",
+    "Pravin Pagar developer",
     "Portfolio",
     "Web Design",
     "Web Development",
-    "Frontend Projects",
+    "MERN Stack Projects",
     "React",
     "Next.js",
+    "Full Stack Projects",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: `${SITE_CONFIG.url}/projects`,
     siteName: SITE_CONFIG.name,
-    title: `${SITE_CONFIG.name}'s Portfolio`,
-    description: "Explore my latest creative and technical projects.",
+    title: `${SITE_CONFIG.name} Portfolio & Projects | MERN Stack Developer`,
+    description:
+      "Explore Pravin Pagar's innovative full-stack projects and MERN stack web applications.",
     images: [
       {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: SITE_CONFIG.name,
+        alt: `${SITE_CONFIG.name} - Portfolio Projects`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_CONFIG.name}'s Portfolio`,
-    description: "Explore my latest creative and technical projects.",
+    title: `${SITE_CONFIG.name} Portfolio & MERN Projects`,
+    description:
+      "Explore Pravin Pagar developer's portfolio of full-stack web applications.",
     creator: "@pravinpagar",
     images: [SITE_CONFIG.ogImage],
   },
