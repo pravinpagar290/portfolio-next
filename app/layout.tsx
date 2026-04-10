@@ -33,8 +33,6 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
-  robots:
-    "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   formatDetection: {
     email: true,
     address: false,
