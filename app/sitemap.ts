@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { SITE_CONFIG, PROJECTS } from "@/lib/data";
+import { SITE_CONFIG, PROJECTS, ARTICLES } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url.endsWith("/")
@@ -49,5 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...projectPages];
+  // Dynamic blog post pages
+  const blogPages = ARTICLES.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...projectPages, ...blogPages];
 }

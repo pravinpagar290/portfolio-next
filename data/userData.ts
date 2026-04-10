@@ -792,3 +792,4 @@ export const SOCIAL_LINKS = Object.entries(UserData.social).map(
 );
 export const EXPERIENCE = UserData.experience;
 export const NAVIGATION = UserData.navigation;
+export const ARTICLES = UserData.articles;

@@ -1,8 +1,11 @@
 import { MetadataRoute } from "next";
-import { SITE_CONFIG, PROJECTS } from "@/lib/data";
+import { SITE_CONFIG } from "@/lib/data";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = SITE_CONFIG.url;
+  // Ensure baseUrl doesn't have trailing slash to avoid double slashes in sitemap URL
+  const baseUrl = SITE_CONFIG.url.endsWith("/")
+    ? SITE_CONFIG.url.slice(0, -1)
+    : SITE_CONFIG.url;
 
   return {
     rules: [
