@@ -1,14 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { TestimonialCarousel } from "@/components/ui/profile-card-testimonial-carousel";
 import { MOTION_VARIANTS } from "@/lib/motion";
 
 export default function About() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("about-in-view", { detail: isInView }));
+  }, [isInView]);
+
   return (
     <SectionWrapper id="about" className="py-24 md:py-32">
-      <div className="flex flex-col gap-16 md:gap-24">
+      <div ref={ref} className="flex flex-col gap-16 md:gap-24">
         {/* Header Section */}
         <div className="flex flex-col gap-4 max-w-3xl">
           <motion.span 

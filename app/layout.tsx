@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/layout/CustomCursor";
-import ScrollProgress from "@/components/layout/ScrollProgress";
 import { SITE_CONFIG } from "@/lib/data";
 
 const inter = Inter({
@@ -153,7 +152,6 @@ export default function RootLayout({
         suppressHydrationWarning
         className="font-sans antialiased bg-black text-white selection:bg-accent selection:text-white overflow-x-hidden"
       >
-        <ScrollProgress />
         <CustomCursor />
         <SmoothScroll>
           <div className="flex flex-col min-h-screen">

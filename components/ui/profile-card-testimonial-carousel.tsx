@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -121,6 +122,15 @@ export interface TestimonialCarouselProps {
 
 export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAboutInView, setIsAboutInView] = useState(false);
+
+  useEffect(() => {
+    const handleAboutInView = (e: Event) => {
+      setIsAboutInView((e as CustomEvent).detail);
+    };
+    window.addEventListener("about-in-view", handleAboutInView);
+    return () => window.removeEventListener("about-in-view", handleAboutInView);
+  }, []);
 
   const handleNext = () =>
     setCurrentIndex((index) => (index + 1) % testimonials.length);
@@ -147,41 +157,44 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
         {/* Avatar */}
         <div className="w-[470px] h-[470px] rounded-3xl overflow-hidden bg-gray-200 dark:bg-neutral-800 shrink-0 border border-white/10">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={currentTestimonial.imageUrl}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="w-full h-full relative"
-            >
-              {/* Grayscale base image */}
-              <Image
-                src={currentTestimonial.imageUrl}
-                alt={currentTestimonial.name}
-                width={470}
-                height={470}
-                className="w-full h-full object-cover grayscale"
-                draggable={false}
-                priority
-              />
-              {/* Color overlay with fade-to-left effect */}
-              <Image
-                src={currentTestimonial.imageUrl}
-                alt={currentTestimonial.name}
-                width={470}
-                height={470}
-                className="w-full h-full object-cover absolute inset-0 hover:opacity-100 opacity-0 transition-opacity duration-500"
-                draggable={false}
-                priority
-                style={{
-                  maskImage:
-                    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-            </motion.div>
+            {isAboutInView && (
+              <motion.div
+                layoutId="hero-profile-image"
+                key={currentTestimonial.imageUrl}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], layout: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } }}
+                className="w-full h-full relative"
+              >
+                {/* Grayscale base image */}
+                <Image
+                  src={currentTestimonial.imageUrl}
+                  alt={currentTestimonial.name}
+                  width={470}
+                  height={470}
+                  className="w-full h-full object-cover grayscale"
+                  draggable={false}
+                  priority
+                />
+                {/* Color overlay with fade-to-left effect */}
+                <Image
+                  src={currentTestimonial.imageUrl}
+                  alt={currentTestimonial.name}
+                  width={470}
+                  height={470}
+                  className="w-full h-full object-cover absolute inset-0 hover:opacity-100 opacity-0 transition-opacity duration-500"
+                  draggable={false}
+                  priority
+                  style={{
+                    maskImage:
+                      "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+                  }}
+                />
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
 
@@ -233,41 +246,44 @@ export function TestimonialCarousel({ className }: TestimonialCarouselProps) {
         {/* Avatar */}
         <div className="w-full aspect-square bg-white/5 rounded-3xl overflow-hidden mb-8 border border-white/10">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={currentTestimonial.imageUrl}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="w-full h-full relative"
-            >
-              {/* Grayscale base image */}
-              <Image
-                src={currentTestimonial.imageUrl}
-                alt={currentTestimonial.name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover grayscale"
-                draggable={false}
-                priority
-              />
-              {/* Color overlay with fade-to-left effect */}
-              <Image
-                src={currentTestimonial.imageUrl}
-                alt={currentTestimonial.name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover absolute inset-0 hover:opacity-100 opacity-0 transition-opacity duration-500"
-                draggable={false}
-                priority
-                style={{
-                  maskImage:
-                    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-                }}
-              />
-            </motion.div>
+            {isAboutInView && (
+              <motion.div
+                layoutId="hero-profile-image-mobile"
+                key={currentTestimonial.imageUrl}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], layout: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } }}
+                className="w-full h-full relative"
+              >
+                {/* Grayscale base image */}
+                <Image
+                  src={currentTestimonial.imageUrl}
+                  alt={currentTestimonial.name}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover grayscale"
+                  draggable={false}
+                  priority
+                />
+                {/* Color overlay with fade-to-left effect */}
+                <Image
+                  src={currentTestimonial.imageUrl}
+                  alt={currentTestimonial.name}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover absolute inset-0 hover:opacity-100 opacity-0 transition-opacity duration-500"
+                  draggable={false}
+                  priority
+                  style={{
+                    maskImage:
+                      "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+                  }}
+                />
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
 

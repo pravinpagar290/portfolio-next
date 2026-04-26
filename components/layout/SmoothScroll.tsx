@@ -37,9 +37,8 @@ interface SmoothScrollProps {
 }
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
-  // `syncTouch` is critical for Mobile devices mapping properly to animation progression
   return (
-    <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothWheel: true, syncTouch: true }}>
+    <ReactLenis root options={{ lerp: 0.03, duration: 5.0, wheelMultiplier: 0.7, smoothWheel: true, syncTouch: true }}>
       <GSAPSync />
       {children}
     </ReactLenis>
