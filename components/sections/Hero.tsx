@@ -3,13 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
-import { Bebas_Neue } from "next/font/google";
 import { MagneticText } from "@/components/ui/morphing-cursor";
-
-const bebas = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,7 +101,7 @@ export default function Hero() {
                 hoverText="FULLSTACK"
                 hoverSize={350}
                 className="w-full flex justify-center md:justify-end"
-                textClassName={`text-[clamp(60px,18vw,100px)] md:text-[clamp(80px,12vw,180px)] leading-[0.8] tracking-[-0.02em] font-bold text-center md:text-right ${bebas.className}`}
+                textClassName="text-[clamp(60px,18vw,100px)] md:text-[clamp(80px,12vw,180px)] leading-[0.8] tracking-[-0.02em] font-bold text-center md:text-right font-bebas"
               />
             </motion.div>
             <motion.div 
@@ -142,6 +136,7 @@ export default function Hero() {
                   alt="Pravin Pagar"
                   fill
                   priority
+                  sizes="(max-width: 768px) 160px, 280px"
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </motion.div>
@@ -161,7 +156,7 @@ export default function Hero() {
                 hoverText="DEVELOPER"
                 hoverSize={350}
                 className="w-full flex justify-center md:justify-start"
-                textClassName={`text-[clamp(60px,18vw,100px)] md:text-[clamp(80px,12vw,180px)] leading-[0.8] tracking-[-0.02em] font-bold text-center md:text-left transition-all duration-300 ${bebas.className}`}
+                textClassName="text-[clamp(60px,18vw,100px)] md:text-[clamp(80px,12vw,180px)] leading-[0.8] tracking-[-0.02em] font-bold text-center md:text-left transition-all duration-300 font-bebas"
               />
             </motion.div>
             <motion.div 
@@ -170,7 +165,7 @@ export default function Hero() {
               animate="visible"
               className="mt-2 md:mt-4 text-xs tracking-widest uppercase text-white/50 text-center md:text-left"
             >
-              MERN · Next.js · TypeScript
+              Next.js · React Native · AI Systems
             </motion.div>
           </div>
 

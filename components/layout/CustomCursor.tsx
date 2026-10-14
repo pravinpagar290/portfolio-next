@@ -22,6 +22,9 @@ export default function CustomCursor() {
       return; // Abort on touch devices
     }
 
+    let currentHovered = false;
+    let currentHoveredText = false;
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -29,8 +32,12 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target || !target.tagName) return;
       const tagName = target.tagName.toLowerCase();
       
+      let nextHovered = false;
+      let nextHoveredText = false;
+
       // Triggers scale based on interactive elements
       if (
         tagName === "a" ||
@@ -38,21 +45,25 @@ export default function CustomCursor() {
         target.closest("a") ||
         target.closest("button")
       ) {
-        setIsHovered(true);
-        setIsHoveredText(false);
+        nextHovered = true;
       } else if (
         ["h1", "h2", "h3", "h4", "h5", "h6", "p", "span", "strong", "em", "li"].includes(tagName)
       ) {
-        setIsHovered(false);
-        setIsHoveredText(true);
-      } else {
-        setIsHovered(false);
-        setIsHoveredText(false);
+        nextHoveredText = true;
+      }
+
+      if (nextHovered !== currentHovered) {
+        currentHovered = nextHovered;
+        setIsHovered(nextHovered);
+      }
+      if (nextHoveredText !== currentHoveredText) {
+        currentHoveredText = nextHoveredText;
+        setIsHoveredText(nextHoveredText);
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    window.addEventListener("mouseover", handleMouseOver, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
@@ -68,6 +79,7 @@ export default function CustomCursor() {
 
   return (
     <motion.div
+      aria-hidden="true"
       style={{
         translateX: cursorXSpring,
         translateY: cursorYSpring,

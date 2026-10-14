@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Allow placehold.co images for demo project cards
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -19,6 +20,13 @@ const nextConfig: NextConfig = {
     ],
     qualities: [70, 75, 80],
   },
+
+  // Performance - optimize icon and animation package imports
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
+
+  compress: true,
   
   // SEO improvements - trailing slashes for consistency
   trailingSlash: false,

@@ -38,7 +38,16 @@ interface SmoothScrollProps {
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   return (
-    <ReactLenis root options={{ lerp: 0.03, duration: 5.0, wheelMultiplier: 0.7, smoothWheel: true, syncTouch: true }}>
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.08,
+        duration: 1.2,
+        wheelMultiplier: 1.0,
+        smoothWheel: true,
+        syncTouch: false,
+      }}
+    >
       <GSAPSync />
       {children}
     </ReactLenis>

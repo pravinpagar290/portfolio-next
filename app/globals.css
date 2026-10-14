@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: var(--font-inter);
+  --font-bebas: var(--font-bebas);
   
   --color-background: #0A0A0A;
   --color-foreground: #FFFFFF;

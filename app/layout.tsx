@@ -1,28 +1,37 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/layout/CustomCursor";
+import CommandPalette from "@/components/ui/CommandPalette";
 import { SITE_CONFIG } from "@/lib/data";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.name} | Full Stack MERN Stack Developer - Portfolio`,
-    template: `%s | ${SITE_CONFIG.name} - Pravin Pagar Developer`,
+    default: `${SITE_CONFIG.name} | Full Stack Developer - Portfolio`,
+    template: `%s | ${SITE_CONFIG.name}`,
   },
-  description: `${SITE_CONFIG.name} - A Full Stack MERN Stack Developer from Nashik, India. Pravin Pagar specializes in building scalable web applications with React, Node.js, MongoDB, and modern technologies. Explore Pravin Pagar's portfolio of innovative web projects.`,
+  description: `${SITE_CONFIG.name} - Full Stack Developer and IT engineering student from Maharashtra, India specializing in scalable web, mobile, real-time, and AI-driven platforms.`,
   keywords: [
     ...SITE_CONFIG.keywords,
-    "pravin pagar",
+    "pravin dipak pagar",
     "pravin pagar developer",
     "pravin pagar mern stack",
     "pravin pagar portfolio",
@@ -78,6 +87,17 @@ export const metadata: Metadata = {
       "en-US": SITE_CONFIG.url,
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   category: "technology",
   classification: "Portfolio",
   verification: {
@@ -91,13 +111,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${bebas.variable} scroll-smooth`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <link rel="canonical" href={SITE_CONFIG.url} />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* Person Schema */}
         <script
@@ -108,21 +129,43 @@ export default function RootLayout({
               "@type": "Person",
               name: SITE_CONFIG.name,
               url: SITE_CONFIG.url,
-              jobTitle: SITE_CONFIG.role,
+              jobTitle: "Full Stack Developer",
               description: SITE_CONFIG.description,
               email: SITE_CONFIG.links.email,
-              sameAs: [SITE_CONFIG.links.github, SITE_CONFIG.links.linkedin],
-              image: SITE_CONFIG.ogImage,
+              telephone: "+91 9657496319",
+              sameAs: [
+                SITE_CONFIG.links.github,
+                SITE_CONFIG.links.linkedin,
+                SITE_CONFIG.links.twitter,
+              ],
+              image: `${SITE_CONFIG.url}/me.jpg`,
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Nashik",
+                addressLocality: "Loni B.K.",
                 addressRegion: "Maharashtra",
                 addressCountry: "IN",
               },
-              worksFor: {
-                "@type": "Organization",
-                name: "Freelance",
+              alumniOf: {
+                "@type": "CollegeOrUniversity",
+                name: "Sir Visvesvaraya Institute of Technology, Chincholi",
               },
+              knowsAbout: [
+                "Full Stack Development",
+                "Next.js",
+                "React Native",
+                "TypeScript",
+                "Node.js",
+                "Express.js",
+                "LangChain",
+                "LangGraph",
+                "AI Agents",
+                "WebSockets",
+                "MongoDB",
+                "Cloudflare R2",
+                "MediaPipe",
+                "Redis",
+                "BullMQ",
+              ],
             }),
           }}
         />
@@ -152,11 +195,18 @@ export default function RootLayout({
         suppressHydrationWarning
         className="font-sans antialiased bg-black text-white selection:bg-accent selection:text-white overflow-x-hidden"
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-full focus:shadow-xl focus:outline-none text-xs uppercase font-bold tracking-wider"
+        >
+          Skip to content
+        </a>
         <CustomCursor />
+        <CommandPalette />
         <SmoothScroll>
           <div className="flex flex-col min-h-screen">
             <Navbar />
-            <div className="grow">{children}</div>
+            <main id="main-content" className="grow">{children}</main>
             <Footer />
           </div>
         </SmoothScroll>

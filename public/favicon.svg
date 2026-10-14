@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141419" />
+      <stop offset="100%" stop-color="#070709" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#6D28D9" />
+    </linearGradient>
+    <radialGradient id="purpleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base with Neon Violet Border -->
+  <rect x="2.5" y="2.5" width="59" height="59" rx="14" fill="url(#badgeGrad)" stroke="url(#borderGrad)" stroke-width="2.5" />
+
+  <!-- Ambient Internal Violet Radial Light -->
+  <circle cx="42" cy="38" r="18" fill="url(#purpleGlow)" />
+
+  <!-- Monogram P -->
+  <text x="17" y="44" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="38" font-weight="900" fill="#FFFFFF" letter-spacing="-1">P</text>
+
+  <!-- Accent Purple Dot with Glow -->
+  <circle cx="45" cy="41" r="5" fill="#A855F7" opacity="0.6" filter="url(#glow)" />
+  <circle cx="45" cy="41" r="3.6" fill="#8B5CF6" />
+  <circle cx="45" cy="41" r="1.8" fill="#E9D5FF" />
+</svg>
+

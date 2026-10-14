@@ -42,7 +42,7 @@ export default function About() {
             custom={0.2}
             className="text-muted text-xl"
           >
-            I am a MERN Stack Developer with a passion for building innovative and user-friendly web applications.
+            I am a Full Stack Developer with hands-on experience building web and mobile applications, real-time systems, and AI-driven workflows.
           </motion.p>
         </div>
 

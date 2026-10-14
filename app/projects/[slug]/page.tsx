@@ -110,6 +110,23 @@ export default async function ProjectDetailPage({ params }: Props) {
           ))}
         </div>
 
+        {/* Engineering Highlights */}
+        {(project as any).highlights && (project as any).highlights.length > 0 && (
+          <div className="mb-12 p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h2 className="text-lg font-bold uppercase tracking-wider text-accent mb-6">
+              Key Engineering Highlights
+            </h2>
+            <ul className="space-y-4">
+              {(project as any).highlights.map((highlight: string, index: number) => (
+                <li key={index} className="flex items-start gap-4 text-muted text-base leading-relaxed">
+                  <span className="w-2 h-2 rounded-full bg-accent mt-2.5 shrink-0" />
+                  <span className="text-white/80">{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {/* Links */}
         <div className="flex flex-wrap gap-4 mb-16">
           {project.githubUrl && (

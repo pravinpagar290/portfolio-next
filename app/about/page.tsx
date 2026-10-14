@@ -3,35 +3,38 @@ import {
   SITE_CONFIG,
   SKILL_CATEGORIES,
   EXPERIENCE,
+  EDUCATION,
   SOCIAL_LINKS,
 } from "@/lib/data";
 import Link from "next/link";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, GraduationCap, Phone, MapPin, FileText, Download } from "lucide-react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
-  title: `About Pravin Pagar | Full Stack MERN Developer`,
-  description: `Learn about Pravin Pagar, a Full Stack MERN Stack Developer from Nashik, India. Discover Pravin Pagar's journey, expertise in React, Next.js, Node.js, MongoDB, and experience building scalable web applications.`,
+  title: `About Pravin Dipak Pagar | Full Stack Developer`,
+  description: `Learn about Pravin Dipak Pagar, a Full Stack Developer and IT engineering student from Maharashtra, India with expertise in React, Next.js, React Native, Node.js, MongoDB, and AI/agentic workflows.`,
   keywords: [
+    "Pravin Dipak Pagar",
     "Pravin Pagar",
     "Pravin Pagar developer",
-    "Pravin Pagar MERN stack",
     "About Pravin Pagar",
     "Full Stack Developer",
-    "MERN Stack Developer",
-    "React Developer",
+    "React Native Developer",
+    "Next.js Developer",
+    "LangChain Developer",
     "Node.js Developer",
     "Developer Biography",
     "Experience",
     "Skills",
+    "Education",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: `${SITE_CONFIG.url}/about`,
     siteName: SITE_CONFIG.name,
-    title: `About Pravin Pagar | Full Stack MERN Developer`,
-    description: `Discover Pravin Pagar's journey as a Full Stack MERN Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.`,
+    title: `About Pravin Dipak Pagar | Full Stack Developer`,
+    description: `Discover Pravin Dipak Pagar's journey as a Full Stack Developer specializing in React, Next.js, React Native, Node.js, real-time systems, and AI workflows.`,
     images: [
       {
         url: SITE_CONFIG.ogImage,
@@ -43,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `About Pravin Pagar | MERN Developer`,
+    title: `About Pravin Dipak Pagar | Full Stack Developer`,
     description:
-      "Learn about Pravin Pagar's expertise in Full Stack Development with MERN stack.",
+      "Learn about Pravin Dipak Pagar's expertise in Full Stack Development, Real-Time Platforms, and AI Agents.",
     creator: "@pravinpagar",
     images: [SITE_CONFIG.ogImage],
   },
@@ -56,17 +59,30 @@ export default function AboutPage() {
     <main className="min-h-screen pt-24 pb-24">
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-24">
         {/* Header */}
-        <header className="mb-16 md:mb-24">
-          <span className="text-accent font-bold tracking-[0.2em] uppercase text-sm">
-            About Me
-          </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] mt-4">
-            Building
-            <br />
-            Digital
-            <br />
-            Experiences.
-          </h1>
+        <header className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span className="text-accent font-bold tracking-[0.2em] uppercase text-sm">
+              About Me
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] mt-4">
+              Building
+              <br />
+              Scalable
+              <br />
+              Systems.
+            </h1>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="/Pravin_Pagar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent/80 text-white font-bold rounded-full transition-all shadow-lg shadow-accent/25 text-sm uppercase tracking-wider"
+            >
+              <Download className="w-4 h-4" />
+              Download Resume (PDF)
+            </a>
+          </div>
         </header>
 
         {/* Bio Section */}
@@ -78,19 +94,21 @@ export default function AboutPage() {
             <div className="space-y-4 text-muted text-lg leading-relaxed">
               <p>
                 I'm <strong className="text-white">{SITE_CONFIG.name}</strong>,
-                a Full Stack Developer specializing in the MERN stack (MongoDB,
-                Express.js, React, Node.js) with a strong focus on building
-                scalable and responsive web applications.
+                a Full Stack Developer and B.E. Information Technology student with
+                hands-on experience building web and mobile applications using
+                JavaScript, TypeScript, React, Next.js, Node.js, and MongoDB.
               </p>
               <p>
-                Currently pursuing my IT Engineering degree, I'm passionate
-                about turning ideas into functional products through clean code,
-                efficient APIs, and modern UI practices.
+                I have deep experience building REST APIs, real-time systems,
+                AI/agentic workflows using LangChain and LangGraph, video streaming
+                applications (HLS & Cloudflare R2), and third-party integrations.
               </p>
               <p>
-                When I'm not coding, you'll find me participating in hackathons
-                like Smart India Hackathon (SIH), exploring new technologies, or
-                building side projects.
+                Currently, I am working as a Full Stack Developer Intern at{" "}
+                <strong className="text-white">TenAI's Consultant</strong>, where
+                I develop AI-driven interview workflows, real-time voice pipelines
+                (STT/TTS), Redis caching, BullMQ queues, and vision-based interview
+                analysis using MediaPipe.
               </p>
             </div>
           </div>
@@ -98,22 +116,64 @@ export default function AboutPage() {
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                <span className="text-4xl font-black text-accent">8+</span>
-                <p className="text-muted text-sm mt-2">Projects Built</p>
+                <span className="text-4xl font-black text-accent">6+</span>
+                <p className="text-muted text-sm mt-2">Production Projects</p>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                <span className="text-4xl font-black text-accent">2+</span>
-                <p className="text-muted text-sm mt-2">Years Experience</p>
+                <span className="text-4xl font-black text-accent">7.7</span>
+                <p className="text-muted text-sm mt-2">B.E. IT CGPA / 10</p>
               </div>
             </div>
 
-            {/* Location */}
-            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-muted mb-2">
-                Location
-              </h3>
-              <p className="text-xl font-bold">Nashik, Maharashtra, India</p>
+            {/* Location & Contact Info */}
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 space-y-4">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-muted mb-1 flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-accent" /> Location
+                </h3>
+                <p className="text-lg font-bold">Loni B.K., Maharashtra, India</p>
+              </div>
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-muted mb-1 flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-accent" /> Contact
+                </h3>
+                <p className="text-base font-bold text-white/90">+91 9657496319</p>
+                <p className="text-sm text-muted">pravinpagar290@gmail.com</p>
+              </div>
             </div>
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section className="mb-24">
+          <h2 className="text-3xl font-black uppercase mb-8 flex items-center gap-3">
+            <GraduationCap className="w-8 h-8 text-accent" /> Education
+          </h2>
+          <div className="grid grid-cols-1 gap-6">
+            {EDUCATION.map((edu) => (
+              <div
+                key={edu.id}
+                className="p-8 bg-white/5 rounded-2xl border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+              >
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-accent text-lg font-semibold">
+                    {edu.institution}
+                  </p>
+                  <p className="text-muted text-sm mt-1">{edu.location}</p>
+                </div>
+                <div className="flex flex-col md:items-end gap-2 shrink-0">
+                  <span className="text-muted text-sm font-medium px-4 py-2 bg-white/5 rounded-full border border-white/10">
+                    {edu.period}
+                  </span>
+                  <span className="text-accent font-black text-xl">
+                    {edu.grade}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -182,6 +242,15 @@ export default function AboutPage() {
           <h2 className="text-3xl font-black uppercase mb-8">Let's Connect</h2>
           <div className="flex flex-wrap gap-4">
             <a
+              href="/Pravin_Pagar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-bold rounded-full hover:bg-accent/80 transition-colors shadow-lg shadow-accent/25"
+            >
+              <FileText className="w-5 h-5" />
+              Resume (PDF)
+            </a>
+            <a
               href="https://github.com/pravinpagar290"
               target="_blank"
               rel="noopener noreferrer"
@@ -193,7 +262,7 @@ export default function AboutPage() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/pravin-pagar-33b350320"
+              href="https://linkedin.com/in/pravin-pagar"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white font-bold rounded-full hover:border-accent hover:text-accent transition-colors"
@@ -203,12 +272,19 @@ export default function AboutPage() {
               </svg>
               LinkedIn
             </a>
+            <a
+              href="tel:+919657496319"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white font-bold rounded-full hover:border-accent hover:text-accent transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              Call Me
+            </a>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white font-bold rounded-full hover:border-accent hover:text-accent transition-colors"
             >
               <Mail className="w-5 h-5" />
-              Contact Me
+              Contact Form
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

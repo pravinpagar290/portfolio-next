@@ -28,6 +28,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [responseMessage, setResponseMessage] = useState<string>("");
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -76,28 +77,43 @@ export default function Contact() {
 
     if (!validateForm()) {
       setSubmitStatus("error");
+      setResponseMessage("Please check the form for errors.");
       return;
     }
 
     setIsSubmitting(true);
+    setSubmitStatus("idle");
 
     try {
-      // TODO: Replace with your actual email service (e.g., Nodemailer, SendGrid, Resend)
-      // For now, just log and simulate success
-      console.log("Form submitted:", formData);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit message");
+      }
 
       setSubmitStatus("success");
+      setResponseMessage(data.message || "Thank you! Your message has been sent successfully.");
       setFormData({ name: "", email: "", message: "" });
+      setErrors({});
 
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitStatus("idle"), 5000);
-    } catch (error) {
+      setTimeout(() => {
+        setSubmitStatus("idle");
+        setResponseMessage("");
+      }, 7000);
+    } catch (error: any) {
       console.error("Form submission error:", error);
       setSubmitStatus("error");
-      setTimeout(() => setSubmitStatus("idle"), 5000);
+      setResponseMessage(error.message || "Failed to send message. Please reach out via email directly.");
+      setTimeout(() => {
+        setSubmitStatus("idle");
+        setResponseMessage("");
+      }, 7000);
     } finally {
       setIsSubmitting(false);
     }
@@ -133,8 +149,8 @@ export default function Contact() {
             />
           </div>
           <p className="text-xl text-muted max-w-xl text-balance mt-4">
-            Whether you have an enterprise platform in mind, or just want to
-            chat about custom WebGL shaders—my inbox is open.
+            Whether you have a full-stack platform in mind, need AI agent workflows,
+            or want to collaborate—my inbox is open.
           </p>
         </motion.div>
 
@@ -142,24 +158,21 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-2xl p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400 text-center"
+            className="w-full max-w-2xl p-4 bg-green-500/10 border border-green-500/50 rounded-2xl text-green-400 text-center font-medium"
           >
-            ✓ Thank you! Your message has been sent successfully. I'll get back
-            to you soon.
+            ✓ {responseMessage || "Thank you! Your message has been sent successfully. I'll get back to you soon."}
           </motion.div>
         )}
 
-        {submitStatus === "error" &&
-          errors &&
-          Object.keys(errors).length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="w-full max-w-2xl p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400 text-center"
-            >
-              ✗ Please check the form for errors.
-            </motion.div>
-          )}
+        {submitStatus === "error" && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="w-full max-w-2xl p-4 bg-red-500/10 border border-red-500/50 rounded-2xl text-red-400 text-center font-medium"
+          >
+            ✗ {responseMessage || "Please check the form for errors."}
+          </motion.div>
+        )}
 
         <motion.form
           initial={{ opacity: 0, y: 20 }}
@@ -270,7 +283,7 @@ export default function Contact() {
           className="text-center mt-12 pt-12 border-t border-white/10 w-full max-w-2xl"
         >
           <p className="text-muted mb-6">Or reach out directly</p>
-          <div className="flex flex-col md:flex-row justify-center gap-8">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             <a
               href="mailto:pravinpagar290@gmail.com"
               className="text-white hover:text-accent transition-colors font-bold"
@@ -278,7 +291,13 @@ export default function Contact() {
               pravinpagar290@gmail.com
             </a>
             <a
-              href="https://www.linkedin.com/in/pravin-pagar-33b350320/"
+              href="tel:+919657496319"
+              className="text-white hover:text-accent transition-colors font-bold"
+            >
+              +91 9657496319
+            </a>
+            <a
+              href="https://www.linkedin.com/in/pravin-pagar"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-accent transition-colors font-bold"

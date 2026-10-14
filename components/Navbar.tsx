@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { SITE_CONFIG } from "@/lib/data";
+import { Search, FileText } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -54,6 +55,8 @@ export default function Navbar() {
       layoutId="menu-button-slide"
       transition={{ type: "spring", stiffness: 250, damping: 25 }}
       onClick={() => setIsMenuOpen(!isMenuOpen)}
+      aria-expanded={isMenuOpen}
+      aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
       className={`flex items-center gap-3 uppercase text-sm tracking-widest focus:outline-none overflow-hidden will-change-transform ${
         isPastHero && !isMenuOpen
           ? "px-6 py-3 bg-[#1a1a1a] border border-white/10 rounded-full shadow-2xl text-white"
@@ -107,8 +110,8 @@ export default function Navbar() {
         }`}
       >
         <div className="w-full h-20 px-6 md:px-8 flex items-center justify-between pointer-events-auto">
-          {/* Left: Logo (Permanent) */}
-          <div className="w-1/3 flex justify-start">
+          {/* Left: Logo + Search Command Trigger */}
+          <div className="w-1/3 flex justify-start items-center gap-3">
             <Link
               href="/"
               onClick={() => setIsMenuOpen(false)}
@@ -116,6 +119,17 @@ export default function Navbar() {
             >
               {SITE_CONFIG.name.split(" ")[0]}.
             </Link>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+              aria-label="Search portfolio or press Command K"
+              title="Search & Quick Actions (⌘K / Ctrl+K)"
+              className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/40 text-white/70 hover:text-white transition-all text-xs"
+            >
+              <Search className="w-3.5 h-3.5 text-accent" />
+              <span className="hidden lg:inline text-[11px] font-medium text-white/50">Search</span>
+              <kbd className="px-1.5 py-0.5 text-[9px] bg-black/40 border border-white/15 rounded text-white/60 font-mono">⌘K</kbd>
+            </button>
           </div>
 
           {/* Center: Quick Links OR Centered Menu Button */}
@@ -150,8 +164,19 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Right: Menu Button + Ready to Talk (Permanent) */}
-          <div className="w-1/3 flex justify-end items-center gap-6">
+          {/* Right: Resume Link + Menu Button + Ready to Talk */}
+          <div className="w-1/3 flex justify-end items-center gap-4 md:gap-6">
+            <a
+              href="/Pravin_Pagar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden xl:inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-white/70 hover:text-accent transition-colors"
+              title="Open Pravin Pagar's Resume (PDF)"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Resume</span>
+            </a>
+
             {/* Menu Button (when on Hero) */}
             {(!isPastHero || isMenuOpen) && (
               <SharedMenuButton />
@@ -243,7 +268,7 @@ export default function Navbar() {
                         GitHub
                       </a>
                       <a
-                        href="https://www.linkedin.com/in/pravin-pagar-33b350320/"
+                        href="https://www.linkedin.com/in/pravin-pagar"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm text-white/70 hover:text-white hover:underline transition-all"
@@ -251,12 +276,12 @@ export default function Navbar() {
                         LinkedIn
                       </a>
                       <a
-                        href="https://twitter.com/pravinpagar"
+                        href="/Pravin_Pagar_Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-white/70 hover:text-white hover:underline transition-all"
+                        className="text-sm text-accent hover:underline font-semibold transition-all flex items-center gap-1"
                       >
-                        Twitter
+                        <FileText className="w-3.5 h-3.5" /> Resume (PDF)
                       </a>
                     </div>
                   </div>

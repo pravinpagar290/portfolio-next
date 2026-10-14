@@ -13,7 +13,9 @@ import {
   SKILL_CATEGORIES as SkillCategories,
   SOCIAL_LINKS as SocialLinks,
   EXPERIENCE as ExperienceList,
+  EDUCATION as EducationList,
   NAVIGATION as NavigationLinks,
+  BLOG as BlogList,
 } from "@/data/userData";
 
 // Export with original names for backward compatibility
@@ -22,4 +24,6 @@ export const PROJECTS = ProjectList;
 export const SKILL_CATEGORIES = SkillCategories;
 export const SOCIAL_LINKS = SocialLinks;
 export const EXPERIENCE = ExperienceList;
+export const EDUCATION = EducationList;
 export const NAVIGATION = NavigationLinks;
+export const BLOG = BlogList;

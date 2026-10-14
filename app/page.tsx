@@ -1,42 +1,49 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { PROJECTS, SITE_CONFIG } from "@/lib/data";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import ProjectCard from "@/components/ui/ProjectCard";
-import PinnedStory from "@/components/sections/gsap/PinnedStory";
-import Timeline from "@/components/sections/Timeline";
-import BlogPreview from "@/components/sections/BlogPreview";
-import Contact from "@/components/sections/Contact";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+// Dynamically import below-the-fold interactive & animation-heavy sections
+const PinnedStory = dynamic(
+  () => import("@/components/sections/gsap/PinnedStory")
+);
+const Timeline = dynamic(() => import("@/components/sections/Timeline"));
+const BlogPreview = dynamic(() => import("@/components/sections/BlogPreview"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
-  title: `Pravin Pagar - Full Stack MERN Developer Portfolio`,
-  description: `Pravin Pagar's full stack developer portfolio. Explore MERN stack projects, experience in React, Next.js, Node.js, MongoDB. Pravin Pagar developer specializing in high-performance web applications.`,
+  title: `Pravin Dipak Pagar | Full Stack Developer Portfolio`,
+  description: `Pravin Dipak Pagar's full stack developer portfolio. Explore full-stack web and mobile projects, real-time collaboration platforms, and AI agent workflows built with React, Next.js, React Native, Node.js, and MongoDB.`,
   keywords: [
+    "pravin dipak pagar",
     "pravin pagar",
     "pravin pagar developer",
-    "pravin pagar mern stack",
-    "pravin pagar portfolio",
     "full stack developer",
-    "MERN stack developer",
-    "React developer",
+    "react native developer",
+    "next.js developer",
+    "langchain",
+    "ai agents",
+    "real-time systems",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: SITE_CONFIG.url,
-    title: `Pravin Pagar - Full Stack MERN Developer | Portfolio`,
+    title: `Pravin Dipak Pagar | Full Stack Developer Portfolio`,
     description:
-      "Discover Pravin Pagar's projects and expertise in Full Stack Development. MERN Stack specialist building scalable web applications.",
+      "Explore Pravin Dipak Pagar's full-stack applications, real-time platforms, video streaming architecture, and AI agent workflows.",
     images: [
       {
         url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: "Pravin Pagar Portfolio",
+        alt: "Pravin Dipak Pagar Portfolio",
       },
     ],
   },

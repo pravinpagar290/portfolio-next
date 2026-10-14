@@ -82,37 +82,37 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Pravin Pagar",
-    title: "Full Stack (MERN) Developer · IT Engineering Student",
+    name: "Pravin Dipak Pagar",
+    title: "Full Stack Developer · IT Engineering Student",
     description:
-      "Full-stack developer specializing in the MERN stack (MongoDB, Express.js, React, Node.js) with a strong focus on building scalable and responsive web applications. Passionate about turning ideas into functional products through clean code, efficient APIs, and modern UI practices.",
+      "Full Stack Developer and B.E. Information Technology student with hands-on experience building web and mobile applications using JavaScript, TypeScript, React, Next.js, Node.js, and MongoDB. Experienced in REST APIs, real-time systems, AI/agentic workflows, video applications, and third-party integrations.",
     imageUrl: "/me.jpg",
     githubUrl: "https://github.com/pravinpagar290",
     twitterUrl: "#",
     youtubeUrl: "#",
-    linkedinUrl: "https://www.linkedin.com/in/pravin-pagar-33b350320/",
+    linkedinUrl: "https://www.linkedin.com/in/pravin-pagar",
   },
   {
-    name: "My Tech Stack",
-    title: "JavaScript · TypeScript · React · Node.js · MongoDB",
+    name: "Technical Stack",
+    title: "Next.js · React Native · LangChain · WebSockets · MongoDB",
     description:
-      "Core toolkit: JavaScript/TypeScript, React & Next.js for interactive UIs, Node.js + Express for scalable APIs, and MongoDB/MySQL for data. I rely on Tailwind CSS, shadcn/ui, GSAP, Redux, and modern tooling to ship responsive, animated, production-ready experiences.",
+      "Versatile toolkit spanning frontend, backend, real-time, and AI: React.js, Next.js, React Native, TypeScript, Node.js, and Express.js. Experienced with LangChain, LangGraph, MediaPipe, WebSockets, Stream SDK, Redis caching, and BullMQ background processing.",
     imageUrl: "/me.jpg",
     githubUrl: "https://github.com/pravinpagar290",
     twitterUrl: "#",
     youtubeUrl: "#",
-    linkedinUrl: "https://www.linkedin.com/in/pravin-pagar-33b350320/",
+    linkedinUrl: "https://www.linkedin.com/in/pravin-pagar",
   },
   {
     name: "What Drives Me",
-    title: "Real-world Products · Problem Solving · Continuous Learning",
+    title: "Agentic Systems · Real-Time Scale · Production Quality",
     description:
-      "I’m driven by building real products that solve actual problems. I love diving into complex challenges, architecting clean solutions, and constantly learning new technologies to stay ahead in this fast-moving field.",
+      "Passionate about architecting responsive, reliable software systems that solve real human problems—from AI-driven interview pipelines and real-time collaboration engines to high-concurrency video delivery platforms.",
     imageUrl: "/me.jpg",
     githubUrl: "https://github.com/pravinpagar290",
     twitterUrl: "#",
     youtubeUrl: "#",
-    linkedinUrl: "https://www.linkedin.com/in/pravin-pagar-33b350320/",
+    linkedinUrl: "https://www.linkedin.com/in/pravin-pagar",
   },
 ];
 

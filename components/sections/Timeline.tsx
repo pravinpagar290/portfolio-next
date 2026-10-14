@@ -75,7 +75,19 @@ export default function Timeline() {
                     <h4 className="text-muted font-medium uppercase tracking-wider text-sm mb-4">
                       {item.company}
                     </h4>
-                    <p className="text-muted/80">{item.description}</p>
+                    <p className="text-muted/80 mb-4">{item.description}</p>
+                    {item.skills && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="px-2.5 py-1 bg-white/5 rounded-full text-xs font-medium text-white/70 border border-white/5"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
